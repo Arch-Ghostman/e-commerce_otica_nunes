@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Óculos de Sol Esportivo Masculino - VisionMax</title>
+  <meta name="description" content="Óculos de Sol Esportivo Masculino com proteção UV e design moderno. Compre na VisionMax com frete grátis.">
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./css/cart.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* Estilos específicos para a página de produto */
+    .product-detail {
+      padding: 30px 0;
+    }
+
+    .product-detail-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .product-images {
+      position: relative;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--cultured);
+      margin-bottom: 20px;
+    }
+
+    .thumbnail-images {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: var(--border-radius-sm);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+
+    .thumbnail:hover,
+    .thumbnail.active {
+      border-color: var(--salmon-pink);
+    }
+
+    .product-info h1 {
+      font-size: 2.5rem;
+      color: var(--eerie-black);
+      margin-bottom: 10px;
+      font-weight: var(--weight-700);
+    }
+
+    .product-category {
+      color: var(--davys-gray);
+      font-size: var(--fs-6);
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .rating-stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .rating-stars ion-icon {
+      color: var(--sandy-brown);
+      font-size: 18px;
+    }
+
+    .rating-text {
+      color: var(--davys-gray);
+      font-size: var(--fs-7);
+    }
+
+    .product-price {
+      margin-bottom: 30px;
+    }
+
+    .current-price {
+      font-size: 2rem;
+      color: var(--salmon-pink);
+      font-weight: var(--weight-700);
+      margin-right: 15px;
+    }
+
+    .original-price {
+      font-size: 1.5rem;
+      color: var(--davys-gray);
+      text-decoration: line-through;
+    }
+
+    .discount-badge {
+      background: var(--salmon-pink);
+      color: var(--white);
+      padding: 5px 10px;
+      border-radius: var(--border-radius-sm);
+      font-size: var(--fs-8);
+      font-weight: var(--weight-600);
+      margin-left: 10px;
+    }
+
+    .product-description {
+      color: var(--davys-gray);
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .product-features {
+      margin-bottom: 30px;
+    }
+
+    .product-features h3 {
+      color: var(--eerie-black);
+      font-size: var(--fs-5);
+      margin-bottom: 15px;
+    }
+
+    .features-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .features-list li {
+      color: var(--davys-gray);
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .features-list li::before {
+      content: "✓";
+      color: var(--salmon-pink);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .add-to-cart-btn {
+      flex: 1;
+      background: var(--salmon-pink);
+      color: var(--white);
+      border: none;
+      padding: 15px 30px;
+      border-radius: var(--border-radius-md);
+      font-size: var(--fs-6);
+      font-weight: var(--weight-600);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .add-to-cart-btn:hover {
+      background: var(--eerie-black);
+    }
+
+    .wishlist-btn {
+      background: transparent;
+      border: 2px solid var(--salmon-pink);
+      color: var(--salmon-pink);
+      padding: 15px;
+      border-radius: var(--border-radius-md);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .wishlist-btn:hover {
+      background: var(--salmon-pink);
+      color: var(--white);
+    }
+
+    .related-products {
+      margin-top: 60px;
+      padding: 40px 20px;
+      border-top: 1px solid var(--cultured);
+      background: var(--white-2);
+    }
+
+    .related-products h2 {
+      text-align: center;
+      color: var(--eerie-black);
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+      font-weight: var(--weight-600);
+      position: relative;
+    }
+
+    .related-products h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--salmon-pink);
+      border-radius: 2px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .related-grid .showcase {
+      background: var(--white);
+      border-radius: var(--border-radius-md);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .related-grid .showcase:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .related-grid .showcase-banner {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      background: var(--cultured);
+      transition: all 0.3s ease;
+      height: 280px;
+    }
+
+    .related-grid .showcase-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.4s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .related-grid .showcase-banner .product-img.hover {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+
+    .related-grid .showcase-banner .product-img.default {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .related-grid .showcase:hover .product-img.default {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+
+    .related-grid .showcase:hover .product-img.hover {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .related-grid .showcase-content {
+      padding: 20px;
+    }
+
+    .related-grid .showcase-category {
+      color: var(--salmon-pink);
+      font-size: var(--fs-8);
+      font-weight: var(--weight-500);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .related-grid .showcase-title {
+      color: var(--eerie-black);
+      font-size: var(--fs-6);
+      font-weight: var(--weight-600);
+      margin-bottom: 12px;
+      line-height: 1.4;
+      transition: color 0.3s ease;
+    }
+
+    .related-grid .showcase-title:hover {
+      color: var(--salmon-pink);
+    }
+
+    .related-grid .showcase-rating {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 15px;
+    }
+
+    .related-grid .showcase-rating ion-icon {
+      color: var(--sandy-brown);
+      font-size: 14px;
+    }
+
+    .related-grid .price-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .related-grid .price {
+      color: var(--salmon-pink);
+      font-size: var(--fs-5);
+      font-weight: var(--weight-700);
+    }
+
+    .related-grid .price-box del {
+      color: var(--sonic-silver);
+      font-size: var(--fs-7);
+    }
+
+    .related-grid .showcase-actions {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: all 0.3s ease;
+    }
+
+    .related-grid .showcase:hover .showcase-actions {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .related-grid .btn-action {
+      background: var(--white);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .related-grid .btn-action:hover {
+      background: var(--salmon-pink);
+      color: var(--white);
+      transform: scale(1.1);
+    }
+
+    .related-grid .btn-action:last-child {
+      background: var(--salmon-pink);
+      color: var(--white);
+    }
+
+    .related-grid .btn-action:last-child:hover {
+      background: var(--eerie-black);
+      transform: scale(1.1);
+    }
+
+    .related-grid .showcase-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--salmon-pink);
+      color: var(--white);
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: var(--fs-8);
+      font-weight: var(--weight-600);
+      z-index: 1;
+    }
+
+    .related-grid .showcase-badge.angle.pink {
+      background: linear-gradient(45deg, var(--salmon-pink), #ff6b9d);
+    }
+
+    @media (max-width: 768px) {
+      .product-detail-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .product-info h1 {
+        font-size: 2rem;
+      }
+
+      .current-price {
+        font-size: 1.5rem;
+      }
+
+      .product-actions {
+        flex-direction: column;
+      }
+
+      .related-products {
+        padding: 30px 15px;
+        margin-top: 40px;
+      }
+
+      .related-products h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+      }
+
+      .related-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .related-grid .showcase-content {
+        padding: 15px;
+      }
+
+      .related-grid .showcase-actions {
+        position: static;
+        opacity: 1;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 15px;
+        padding: 0 15px;
+      }
+
+      .related-grid .btn-action {
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .related-products h2 {
+        font-size: 1.6rem;
+      }
+
+      .related-grid .showcase-title {
+        font-size: var(--fs-7);
+      }
+
+      .related-grid .price {
+        font-size: var(--fs-6);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .related-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!--
+    - HEADER
+  -->
+
+  <header>
+
+    <div class="header-top">
+
+      <div class="container">
+
+        <ul class="header-social-container">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="header-alert-news">
+          <p>
+            <b>Frete Grátis</b>
+            Esta Semana em Pedidos Acima de R$ 199
+          </p>
+        </div>
+
+        <div class="header-top-actions">
+
+          <select name="language">
+
+            <option value="pt-BR">Português</option>
+            <option value="en-US">English</option>
+            <option value="es-ES">Español</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="header-main">
+
+      <div class="container">
+
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo.jpg" alt="VisionMax logo" width="120" height="100">
+        </a>
+
+        <div class="header-search-container">
+
+          <input type="search" name="search" class="search-field" placeholder="Digite o nome do produto...">
+
+          <button class="search-btn">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+
+        </div>
+
+        <div class="header-user-actions">
+
+          <button class="action-btn">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count">0</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <nav class="desktop-navigation-menu">
+
+      <div class="container">
+
+        <ul class="desktop-menu-category-list">
+
+          <li class="menu-category">
+            <a href="index.html" class="menu-title">Início</a>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title">Produtos</a>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title">Sobre</a>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title">Contato</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </nav>
+
+    <div class="mobile-bottom-navigation">
+
+      <button class="action-btn" data-mobile-menu-open-btn>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <button class="action-btn" onclick="cart.toggleCart()">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+
+        <span class="count">0</span>
+      </button>
+
+      <button class="action-btn" onclick="window.location.href='index.html'">
+        <ion-icon name="home-outline"></ion-icon>
+      </button>
+
+      <button class="action-btn" onclick="toggleWishlist()">
+        <ion-icon name="heart-outline"></ion-icon>
+
+        <span class="count">0</span>
+      </button>
+
+      <button class="action-btn" data-mobile-menu-open-btn>
+        <ion-icon name="grid-outline"></ion-icon>
+      </button>
+
+    </div>
+
+    <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
+
+      <div class="menu-top">
+        <h2 class="menu-title">Menu</h2>
+
+        <button class="menu-close-btn" data-mobile-menu-close-btn>
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+      </div>
+
+      <ul class="mobile-menu-category-list">
+
+        <li class="menu-category">
+          <a href="index.html" class="menu-title">Início</a>
+        </li>
+
+        <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">Óculos de Sol</p>
+
+            <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+
+          <ul class="submenu-category-list" data-accordion>
+
+            <li class="submenu-category">
+              <a href="#" class="submenu-title">Ray-Ban</a>
+            </li>
+
+            <li class="submenu-category">
+              <a href="#" class="submenu-title">Oakley</a>
+            </li>
+
+            <li class="submenu-category">
+              <a href="#" class="submenu-title">Prada</a>
+            </li>
+
+            <li class="submenu-category">
+              <a href="#" class="submenu-title">Gucci</a>
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">Óculos de Grau</p>
+
+            <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+
+          <ul class="submenu-category-list" data-accordion>
+
+            <li class="submenu-category">
+              <a href="#" class="submenu-title">Armações Clássicas</a>
+            </li>
+
+            <li class="submenu-category">
+              <a href="#" class="submenu-title">Armações Modernas</a>
+            </li>
+
+            <li class="submenu-category">
+              <a href="#" class="submenu-title">Armações Esportivas</a>
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">Lentes de Contato</p>
+
+            <div>
+              <ion-icon name="add-outline" class="add-icon"></ion-icon>
+              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+
+          <ul class="submenu-category-list" data-accordion>
+
+            <li class="submenu-category">
+              <a href="#" class="submenu-title">Lentes Diárias</a>
+            </li>
+
+            <li class="submenu-category">
+              <a href="#" class="submenu-title">Lentes Mensais</a>
+            </li>
+
+            <li class="submenu-category">
+              <a href="#" class="submenu-title">Lentes Coloridas</a>
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li class="menu-category">
+          <a href="#" class="menu-title">Acessórios</a>
+        </li>
+
+        <li class="menu-category">
+          <a href="#" class="menu-title">Promoções</a>
+        </li>
+
+        <li class="menu-category">
+          <a href="#" class="menu-title">Sobre</a>
+        </li>
+
+        <li class="menu-category">
+          <a href="#" class="menu-title">Contato</a>
+        </li>
+
+      </ul>
+
+      <div class="menu-bottom">
+
+        <ul class="menu-category-list">
+
+          <li class="menu-category">
+
+            <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">Idioma</p>
+              <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
+            </button>
+
+            <ul class="submenu-category-list" data-accordion>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Português</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">English</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">Español</a>
+              </li>
+
+            </ul>
+
+          </li>
+
+        </ul>
+
+        <ul class="menu-social-container">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+  <!--
+    - MAIN
+  -->
+
+  <main>
+
+    <!--
+      - PRODUCT DETAIL
+    -->
+
+    <div class="product-detail">
+      <div class="product-detail-container">
+        
+        <!-- Imagens do Produto -->
+        <div class="product-images">
+          <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=600&fit=crop&crop=center" 
+               alt="Óculos de Sol Esportivo Masculino" 
+               class="main-image" 
+               id="mainImage">
+          
+          <div class="thumbnail-images">
+            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=400&fit=crop&crop=center" 
+                 alt="Vista frontal" 
+                 class="thumbnail active"
+                 onclick="changeMainImage(this.src)">
+            <img src="https://images.unsplash.com/photo-1556306535-38febf6782e7?w=400&h=400&fit=crop&crop=center" 
+                 alt="Vista lateral" 
+                 class="thumbnail"
+                 onclick="changeMainImage(this.src)">
+            <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=400&fit=crop&crop=center" 
+                 alt="Vista superior" 
+                 class="thumbnail"
+                 onclick="changeMainImage(this.src)">
+            <img src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=400&h=400&fit=crop&crop=center" 
+                 alt="Detalhe das lentes" 
+                 class="thumbnail"
+                 onclick="changeMainImage(this.src)">
+          </div>
+        </div>
+
+        <!-- Informações do Produto -->
+        <div class="product-info">
+          <div class="product-category">Óculos de Sol</div>
+          
+          <h1>Óculos de Sol Esportivo Masculino</h1>
+          
+          <div class="product-rating">
+            <div class="rating-stars">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+            </div>
+            <span class="rating-text">(4.2) 127 avaliações</span>
+          </div>
+
+          <div class="product-price">
+            <span class="current-price">R$ 189,90</span>
+            <span class="original-price">R$ 249,90</span>
+            <span class="discount-badge">25% OFF</span>
+          </div>
+
+          <div class="product-description">
+            <p>Óculos de sol esportivo masculino com design moderno e proteção UV400. 
+            Ideal para atividades ao ar livre, oferece conforto e estilo. 
+            Armação resistente em material de alta qualidade com lentes polarizadas 
+            que reduzem o reflexo e melhoram a visibilidade.</p>
+          </div>
+
+          <div class="product-features">
+            <h3>Características:</h3>
+            <ul class="features-list">
+              <li>Proteção UV400 - 100% proteção contra raios UVA e UVB</li>
+              <li>Lentes polarizadas anti-reflexo</li>
+              <li>Armação em TR90 - material flexível e resistente</li>
+              <li>Design esportivo e moderno</li>
+              <li>Hastes antiderrapantes para maior segurança</li>
+              <li>Peso ultra leve - apenas 28g</li>
+              <li>Garantia de 2 anos</li>
+            </ul>
+          </div>
+
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart()">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Produtos Relacionados -->
+      <div class="related-products">
+        <h2>Produtos Relacionados</h2>
+        
+        <div class="related-grid">
+          
+          <div class="showcase">
+            <div class="showcase-banner">
+              <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=400&fit=crop&crop=center" 
+                   alt="Óculos de Grau Feminino" 
+                   width="300" 
+                   class="product-img default">
+              <img src="https://images.unsplash.com/photo-1556306535-38febf6782e7?w=400&h=400&fit=crop&crop=center" 
+                   alt="Óculos de Grau Feminino" 
+                   width="300" 
+                   class="product-img hover">
+              
+              <div class="showcase-actions">
+                <button class="btn-action">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </button>
+                <button class="btn-action">
+                  <ion-icon name="repeat-outline"></ion-icon>
+                </button>
+                <button class="btn-action">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="showcase-content">
+              <a href="#" class="showcase-category">Óculos de Grau</a>
+              <a href="product.html">
+                <h3 class="showcase-title">Óculos de Grau Feminino Moderno</h3>
+              </a>
+              <div class="showcase-rating">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </div>
+              <div class="price-box">
+                <p class="price">R$ 299,90</p>
+                <del>R$ 399,90</del>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase">
+            <div class="showcase-banner">
+              <img src="https://images.unsplash.com/photo-1556306535-38febf6782e7?w=400&h=400&fit=crop&crop=center" 
+                   alt="Lentes de Contato Coloridas" 
+                   width="300" 
+                   class="product-img default">
+              <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=400&fit=crop&crop=center" 
+                   alt="Lentes de Contato Coloridas" 
+                   width="300" 
+                   class="product-img hover">
+              
+              <div class="showcase-actions">
+                <button class="btn-action">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </button>
+                <button class="btn-action">
+                  <ion-icon name="repeat-outline"></ion-icon>
+                </button>
+                <button class="btn-action">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="showcase-content">
+              <a href="#" class="showcase-category">Lentes de Contato</a>
+              <a href="product.html">
+                <h3 class="showcase-title">Lentes de Contato Coloridas</h3>
+              </a>
+              <div class="showcase-rating">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </div>
+              <div class="price-box">
+                <p class="price">R$ 89,90</p>
+                <del>R$ 119,90</del>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase">
+            <div class="showcase-banner">
+              <img src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=400&h=400&fit=crop&crop=center" 
+                   alt="Armação Premium" 
+                   width="300" 
+                   class="product-img default">
+              <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=400&fit=crop&crop=center" 
+                   alt="Armação Premium" 
+                   width="300" 
+                   class="product-img hover">
+              
+              <p class="showcase-badge angle pink">premium</p>
+              
+              <div class="showcase-actions">
+                <button class="btn-action">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </button>
+                <button class="btn-action">
+                  <ion-icon name="repeat-outline"></ion-icon>
+                </button>
+                <button class="btn-action">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="showcase-content">
+              <a href="#" class="showcase-category">Armações</a>
+              <a href="product.html">
+                <h3 class="showcase-title">Armação Premium Titanium</h3>
+              </a>
+              <div class="showcase-rating">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </div>
+              <div class="price-box">
+                <p class="price">R$ 599,90</p>
+                <del>R$ 799,90</del>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase">
+            <div class="showcase-banner">
+              <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=400&fit=crop&crop=center" 
+                   alt="Óculos de Sol Feminino" 
+                   width="300" 
+                   class="product-img default">
+              <img src="https://images.unsplash.com/photo-1556306535-38febf6782e7?w=400&h=400&fit=crop&crop=center" 
+                   alt="Óculos de Sol Feminino" 
+                   width="300" 
+                   class="product-img hover">
+              
+              <p class="showcase-badge">15%</p>
+              
+              <div class="showcase-actions">
+                <button class="btn-action">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </button>
+                <button class="btn-action">
+                  <ion-icon name="repeat-outline"></ion-icon>
+                </button>
+                <button class="btn-action">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="showcase-content">
+              <a href="#" class="showcase-category">Óculos de Sol</a>
+              <a href="product.html">
+                <h3 class="showcase-title">Óculos de Sol Feminino Elegante</h3>
+              </a>
+              <div class="showcase-rating">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </div>
+              <div class="price-box">
+                <p class="price">R$ 159,90</p>
+                <del>R$ 189,90</del>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!--
+    - FOOTER
+  -->
+
+  <footer>
+    <div class="footer-category">
+      <div class="container">
+        <h2 class="footer-category-title">VisionMax</h2>
+        <div class="footer-category-box">
+          <h3 class="category-box-title">Produtos</h3>
+          <a href="#" class="footer-category-link">Óculos de Sol</a>
+          <a href="#" class="footer-category-link">Óculos de Grau</a>
+          <a href="#" class="footer-category-link">Lentes de Contato</a>
+          <a href="#" class="footer-category-link">Acessórios</a>
+        </div>
+        <div class="footer-category-box">
+          <h3 class="category-box-title">Atendimento</h3>
+          <a href="#" class="footer-category-link">Central de Ajuda</a>
+          <a href="#" class="footer-category-link">Trocas e Devoluções</a>
+          <a href="#" class="footer-category-link">Frete Grátis</a>
+          <a href="#" class="footer-category-link">Contato</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <div class="container">
+        <p class="footer-nav-text">
+          Copyright &copy; 2024 <a href="#" class="footer-nav-link">VisionMax</a> todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+  <script src="./js/db.js"></script>
+  <script src="./js/product-loader.js"></script>
+  <script src="./js/3d-viewer.js"></script>
+
+  <!--
+    - model-viewer link
+  -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    // Função para trocar a imagem principal
+    function changeMainImage(src) {
+      document.getElementById('mainImage').src = src.replace('w=400&h=400', 'w=600&h=600');
+      
+      // Remove active class de todas as thumbnails
+      document.querySelectorAll('.thumbnail').forEach(thumb => {
+        thumb.classList.remove('active');
+      });
+      
+      // Adiciona active class na thumbnail clicada
+      event.target.classList.add('active');
+    }
+
+    // Função para adicionar ao carrinho
+    function addToCart() {
+      // Usar o sistema de carrinho se disponível
+      if (typeof cart !== 'undefined') {
+        const product = {
+          id: 'oculos-esportivo-masculino',
+          name: 'Óculos de Sol Esportivo Masculino',
+          price: 189.90,
+          image: './assets/images/products/sports-1.jpg'
+        };
+        cart.addItem(product);
+      } else {
+        // Fallback para compatibilidade
+        alert('Produto adicionado ao carrinho!');
+        
+        // Atualiza contador do carrinho
+        const cartCount = document.querySelector('.header-user-actions .count');
+        const currentCount = parseInt(cartCount.textContent);
+        cartCount.textContent = currentCount + 1;
+      }
+    }
+
+    // Função para adicionar à lista de desejos
+    function addToWishlist() {
+      const wishlistBtn = document.querySelector('.wishlist-btn ion-icon');
+      
+      if (wishlistBtn.name === 'heart-outline') {
+        wishlistBtn.name = 'heart';
+        alert('Produto adicionado à lista de desejos!');
+      } else {
+        wishlistBtn.name = 'heart-outline';
+        alert('Produto removido da lista de desejos!');
+      }
+    }
+
+    // Função para toggle da wishlist no menu mobile
+    function toggleWishlist() {
+      alert('Funcionalidade de lista de desejos em desenvolvimento!');
+      
+      // Atualizar contador da wishlist (exemplo)
+      const wishlistCount = document.querySelector('.mobile-bottom-navigation .action-btn:nth-child(4) .count');
+      if (wishlistCount) {
+        const currentCount = parseInt(wishlistCount.textContent);
+        wishlistCount.textContent = currentCount + 1;
+      }
+    }
+  </script>
+
+  <!-- Cart JavaScript -->
+  <script src="./js/cart.js"></script>
+
+</body>
+
+</html>
