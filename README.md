@@ -47,7 +47,7 @@ O objetivo desta versão demo é fornecer ao cliente uma **prévia visual e func
 ### Página Principal
 ![Preview Desktop](./preview/Captura%20de%20tela%202025-10-03%20124425.png)
 
-### Carrinho de Compras
+### Cards de Produtos
 ![Carrinho](./preview/Captura%20de%20tela%202025-10-03%20124436.png)
 
 ### Carrinho com Produtos
