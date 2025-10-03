@@ -58,6 +58,12 @@ O objetivo desta versão demo é fornecer ao cliente uma **prévia visual e func
 
 ## 🚀 Como Executar
 
+### 🌐 **Versão Online (Recomendado)**
+Acesse a versão publicada em tempo real:
+**[https://oticanunes.netlify.app/](https://oticanunes.netlify.app/)**
+
+### 💻 **Execução Local**
+
 1. **Clone o repositório:**
    ```bash
    git clone https://github.com/Arch-Ghostman/e-commerce_otica_nunes.git
