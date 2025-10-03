@@ -50,6 +50,9 @@ O objetivo desta versão demo é fornecer ao cliente uma **prévia visual e func
 ### Carrinho de Compras
 ![Carrinho](./preview/Captura%20de%20tela%202025-10-03%20124436.png)
 
+### Carrinho com Produtos
+![Carrinho com Produtos](./preview/Captura%20de%20tela%202025-10-03%20124523.png)
+
 ### Página de Checkout
 ![Checkout](./preview/Captura%20de%20tela%202025-10-03%20124449.png)
 
