@@ -34,46 +34,104 @@
     }
 
     .product-detail-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        align-items: start;
+      }
+
+      .product-left-column {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: fit-content;
+        width: 100%;
+        min-width: 0;
+        flex: 1;
+      }
+
+      .images-container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: flex-start;
+        width: 100%;
+        overflow: visible;
+        position: relative;
+      }
+
+      .product-images {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        width: 100%;
+        overflow: visible;
+      }
+
+      .thumbnail-images {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: auto;
+        overflow: visible;
+        max-height: none;
+        padding: 10px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10;
+      }
+
+      .product-right-column {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        height: fit-content;
+        flex: 1;
+        min-width: 0;
+      }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
     }
 
-    .product-images {
-      position: relative;
+    .product-basic-info {
+      order: 2;
     }
 
     .main-image {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      border-radius: var(--border-radius-md);
-      border: 1px solid var(--cultured);
-      margin-bottom: 20px;
-    }
-
-    .thumbnail-images {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-    }
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        min-width: 400px;
+      }
 
     .thumbnail {
-      width: 80px;
-      height: 80px;
+      width: 75px;
+      height: 75px;
       object-fit: cover;
-      border-radius: var(--border-radius-sm);
-      border: 2px solid transparent;
+      border-radius: 6px;
       cursor: pointer;
-      transition: border-color 0.3s ease;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      margin: 0;
     }
 
-    .thumbnail:hover,
+    .thumbnail:hover {
+      border-color: #ff6b9d;
+      transform: scale(1.05);
+      z-index: 15;
+    }
+
     .thumbnail.active {
-      border-color: var(--salmon-pink);
+      border-color: #ff6b9d;
+      box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
     }
 
     .product-info h1 {
@@ -173,6 +231,82 @@
       font-weight: bold;
       position: absolute;
       left: 0;
+    }
+
+    /* Estilos para Especificações Técnicas */
+    .product-specifications,
+    .product-dimensions {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: var(--white-2);
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--cultured);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .product-specifications h3,
+    .product-dimensions h3 {
+      color: var(--eerie-black);
+      font-size: var(--fs-6);
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--salmon-pink);
+      font-weight: var(--weight-600);
+    }
+
+    .spec-grid,
+    .dimensions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .spec-item,
+    .dimension-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      background: var(--white);
+      border-radius: var(--border-radius-sm);
+      border: 1px solid var(--cultured);
+      transition: all 0.3s ease;
+    }
+
+    .spec-item:hover,
+    .dimension-item:hover {
+      border-color: var(--salmon-pink);
+      box-shadow: 0 2px 8px rgba(255, 99, 99, 0.1);
+    }
+
+    .spec-label,
+    .dimension-label {
+      font-size: var(--fs-8);
+      color: var(--sonic-silver);
+      font-weight: var(--weight-500);
+    }
+
+    .spec-value,
+    .dimension-value {
+      font-size: var(--fs-8);
+      color: var(--eerie-black);
+      font-weight: var(--weight-600);
+    }
+
+    .product-basic-info {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        height: fit-content;
+        margin-top: 20px;
+      }
+
+    .product-basic-info h1 {
+      font-size: 1.8rem;
+      color: var(--eerie-black);
+      margin-bottom: 10px;
+      font-weight: var(--weight-700);
     }
 
     .product-actions {
@@ -496,6 +630,100 @@
     @media (min-width: 1200px) {
       .related-grid {
         grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Media Queries para Responsividade Mobile */
+    @media (max-width: 768px) {
+      .product-detail-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 20px 15px;
+      }
+
+      .images-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .thumbnail-images {
+        flex-direction: row;
+        width: 100%;
+        max-height: none;
+        padding: 10px 0;
+        justify-content: center;
+        overflow: visible;
+        order: 2;
+        position: static;
+        background: none;
+        border-radius: 0;
+        backdrop-filter: none;
+        gap: 15px;
+      }
+
+      .main-image {
+        min-width: auto;
+        width: 100%;
+        height: 300px;
+        order: 1;
+      }
+
+      .thumbnail {
+        min-width: 80px;
+        flex-shrink: 0;
+        margin: 5px 0;
+      }
+
+      .product-basic-info {
+        margin-top: 15px;
+        padding: 20px;
+      }
+
+      .product-info h1 {
+        font-size: 2rem;
+      }
+
+      .current-price {
+        font-size: 1.8rem;
+      }
+
+      .original-price {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-detail-container {
+        padding: 15px 10px;
+      }
+
+      .main-image {
+        height: 250px;
+      }
+
+      .thumbnail-images {
+        position: static;
+        background: none;
+        border-radius: 0;
+        backdrop-filter: none;
+        overflow: visible;
+        padding: 10px 0;
+        gap: 10px;
+      }
+
+      .thumbnail {
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        margin: 5px 0;
+      }
+
+      .product-info h1 {
+        font-size: 1.8rem;
+      }
+
+      .current-price {
+        font-size: 1.6rem;
       }
     }
   </style>
@@ -855,82 +1083,138 @@
     <div class="product-detail">
       <div class="product-detail-container">
         
-        <!-- Imagens do Produto -->
-        <div class="product-images">
-          <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=600&fit=crop&crop=center" 
-               alt="Óculos de Sol Esportivo Masculino" 
-               class="main-image" 
-               id="mainImage">
-          
-          <div class="thumbnail-images">
-            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=400&fit=crop&crop=center" 
-                 alt="Vista frontal" 
-                 class="thumbnail active"
-                 onclick="changeMainImage(this.src)">
-            <img src="https://images.unsplash.com/photo-1556306535-38febf6782e7?w=400&h=400&fit=crop&crop=center" 
-                 alt="Vista lateral" 
-                 class="thumbnail"
-                 onclick="changeMainImage(this.src)">
-            <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=400&fit=crop&crop=center" 
-                 alt="Vista superior" 
-                 class="thumbnail"
-                 onclick="changeMainImage(this.src)">
-            <img src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=400&h=400&fit=crop&crop=center" 
-                 alt="Detalhe das lentes" 
-                 class="thumbnail"
-                 onclick="changeMainImage(this.src)">
+        <!-- Coluna Esquerda: Imagens e Informações Básicas -->
+        <div class="product-left-column">
+          <div class="product-images">
+            <div class="images-container">
+              <div class="thumbnail-images">
+                <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=400&fit=crop&crop=center" 
+                     alt="Vista frontal" 
+                     class="thumbnail active"
+                     onclick="changeMainImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1556306535-38febf6782e7?w=400&h=400&fit=crop&crop=center" 
+                     alt="Vista lateral" 
+                     class="thumbnail"
+                     onclick="changeMainImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=400&fit=crop&crop=center" 
+                     alt="Vista superior" 
+                     class="thumbnail"
+                     onclick="changeMainImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=400&h=400&fit=crop&crop=center" 
+                     alt="Detalhe das lentes" 
+                     class="thumbnail"
+                     onclick="changeMainImage(this.src)">
+              </div>
+              
+              <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&h=600&fit=crop&crop=center" 
+                   alt="Óculos de Sol Esportivo Masculino" 
+                   class="main-image" 
+                   id="mainImage">
+            </div>
+          </div>
+
+          <!-- Informações básicas embaixo das imagens -->
+          <div class="product-basic-info">
+            <div class="product-category">Óculos de Sol</div>
+            
+            <h1>Óculos de Sol Feminino Elegante</h1>
+            
+            <div class="product-rating">
+              <div class="rating-stars">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </div>
+              <span class="rating-text">(4.2) 127 avaliações</span>
+            </div>
+
+            <div class="product-price">
+              <span class="current-price">R$ 159,90</span>
+              <span class="original-price">R$ 199,90</span>
+              <span class="discount-badge">20% OFF</span>
+            </div>
+
+            <div class="product-description">
+              <p>Óculos de sol feminino com design elegante e sofisticado. Armação delicada com proteção UV completa, perfeito para o dia a dia.</p>
+            </div>
+
+            <div class="product-actions">
+              <button class="add-to-cart-btn" onclick="addToCart()">
+                Adicionar ao Carrinho
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Informações do Produto -->
-        <div class="product-info">
-          <div class="product-category">Óculos de Sol</div>
-          
-          <h1>Óculos de Sol Esportivo Masculino</h1>
-          
-          <div class="product-rating">
-            <div class="rating-stars">
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star"></ion-icon>
-              <ion-icon name="star-outline"></ion-icon>
+        <!-- Coluna Direita: Especificações e Dimensões -->
+        <div class="product-right-column">
+          <!-- Especificações Técnicas -->
+          <div class="product-specifications">
+            <h3>Especificações Técnicas:</h3>
+            <div class="spec-grid">
+              <div class="spec-item">
+                <span class="spec-label">Tipo:</span>
+                <span class="spec-value">Óculos de Sol</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Formato:</span>
+                <span class="spec-value">Aviador</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Gênero:</span>
+                <span class="spec-value">Feminino</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Material:</span>
+                <span class="spec-value">TR90</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Modelo:</span>
+                <span class="spec-value">Sport Pro</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Cor da Armação:</span>
+                <span class="spec-value">Preto Fosco</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Cor das Lentes:</span>
+                <span class="spec-value">Cinza Polarizada</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Tipo de Lente:</span>
+                <span class="spec-value">Polarizada UV400</span>
+              </div>
             </div>
-            <span class="rating-text">(4.2) 127 avaliações</span>
           </div>
 
-          <div class="product-price">
-            <span class="current-price">R$ 189,90</span>
-            <span class="original-price">R$ 249,90</span>
-            <span class="discount-badge">25% OFF</span>
+          <!-- Dimensões -->
+          <div class="product-dimensions">
+            <h3>Dimensões:</h3>
+            <div class="dimensions-grid">
+              <div class="dimension-item">
+                <span class="dimension-label">Comprimento da Peça:</span>
+                <span class="dimension-value">145mm</span>
+              </div>
+              <div class="dimension-item">
+                <span class="dimension-label">Altura da Lente:</span>
+                <span class="dimension-value">52mm</span>
+              </div>
+              <div class="dimension-item">
+                <span class="dimension-label">Largura da Lente:</span>
+                <span class="dimension-value">58mm</span>
+              </div>
+              <div class="dimension-item">
+                <span class="dimension-label">Ponte:</span>
+                <span class="dimension-value">18mm</span>
+              </div>
+              <div class="dimension-item">
+                <span class="dimension-label">Hastes:</span>
+                <span class="dimension-value">140mm</span>
+              </div>
+            </div>
           </div>
-
-          <div class="product-description">
-            <p>Óculos de sol esportivo masculino com design moderno e proteção UV400. 
-            Ideal para atividades ao ar livre, oferece conforto e estilo. 
-            Armação resistente em material de alta qualidade com lentes polarizadas 
-            que reduzem o reflexo e melhoram a visibilidade.</p>
-          </div>
-
-          <div class="product-features">
-            <h3>Características:</h3>
-            <ul class="features-list">
-              <li>Proteção UV400 - 100% proteção contra raios UVA e UVB</li>
-              <li>Lentes polarizadas anti-reflexo</li>
-              <li>Armação em TR90 - material flexível e resistente</li>
-              <li>Design esportivo e moderno</li>
-              <li>Hastes antiderrapantes para maior segurança</li>
-              <li>Peso ultra leve - apenas 28g</li>
-              <li>Garantia de 2 anos</li>
-            </ul>
-          </div>
-
-          <div class="product-actions">
-            <button class="add-to-cart-btn" onclick="addToCart()">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-
         </div>
       </div>
 
